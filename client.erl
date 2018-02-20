@@ -11,7 +11,6 @@
 }).
 
 % Return an initial state record. This is called from GUI.
-% Do not change the signature of this function.
 initial_state(Nick, GUIAtom, ServerAtom) ->
   #client_st{
     gui = GUIAtom,
@@ -26,6 +25,7 @@ initial_state(Nick, GUIAtom, ServerAtom) ->
 % Must return a tuple {reply, Data, NewState}, where:
 %   - Data is what is sent to GUI, either the atom `ok` or a tuple {error, Atom, "Error message"}
 %   - NewState is the updated state of the client
+% Basically three measure: 1.no respond, 2.okay 3.error
 
 % Join channel
 handle(St, {join, Channel}) ->
@@ -60,10 +60,7 @@ handle(St, {message_send, Channel, Msg}) ->
 
   end;
 
-
 % ---------------------------------------------------------------------------
-% The cases below do not need to be changed...
-% But you should understand how they work!
 
 % Get current nick
 handle(St, whoami) ->
